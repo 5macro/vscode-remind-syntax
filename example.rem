@@ -1,0 +1,64 @@
+; holidays
+SET Week_2 8
+SET Week_3 15
+REM Sun Jun [Week_3] +14 MSG Father's Day %b%
+REM Sun May [Week_2] +14 MSG Mother's Day %b%
+REM July 4 +14 MSG Independence Day in the USA %b%
+REM Sun Mar 8 ++2 MSG Daylight Saving Time starts in the USA %b%
+REM SUN Nov 1 ++2 MSG Daylight Saving Time ends in the USA %b%
+
+; chores
+REM ONCE RUN echo floss >> ~/.todo #every day!
+REM 1 +7 MSG rent due %b%
+
+; payday
+REM 31 Mar 2005 *14 MSG It's payday. # biweekly, put in one of your pay dates
+
+; show sunrise/sunset
+SET $LongDeg 71
+SET $LongMin 10
+SET $LongSec 30
+SET $LatDeg 42
+  SET $LatMin 20
+SET $LatSec 27
+MSG sunrise at [sunrise(trigdate())], sunset at [sunset(trigdate())], next full moon at [moontime(2)] on [moondate(2)]%
+
+; prettify the sunrise/sunset/moon data
+fset _srtd() coerce("STRING", _no_lz(_am_pm(sunrise(today()))))
+fset _sstd() coerce("STRING", _no_lz(_am_pm(sunset(today()))))
+fset _srtm() coerce("STRING", _no_lz(_am_pm(sunrise(today()+1))))
+fset _sstm() coerce("STRING", _no_lz(_am_pm(sunset(today()+1))))
+MSG Sun is up today from [_srtd()] to [_sstd()].%"%"%
+MSG Next full moon: [mon(moondate(2))] [day(moondate(2))], [year(moondate(2))].%"%"%
+
+; simple countdown to a date
+fset _vacdays() coerce("STRING", trigdate()-today()) + plural((trigdate()-today()), " day")
+REM August 15 2006 +90 MSG You have [_vacdays()] left until you go to Itchy 'n' Scratchy Land!%"%"%
+; you can achieve a similar effect with the builtin substitution filter
+REM August 15 2006 +90 MSG Holiday %b.
+
+; more elaborate date-based math (example: weight goal)
+fset _curweight() 240
+fset _wtweeks() coerce("STRING", (trigdate()-today())/7) + plural((trigdate()-today())/7, " week")
+fset _wtdays() coerce("STRING", (trigdate()-today())) + plural((trigdate()-today()), " day")
+fset _pounds() coerce("STRING", (2*(trigdate()-today())/7)) + plural(2*((trigdate()-today())/7), " pound")
+fset _finweight() coerce("STRING", (_curweight()-(2*(trigdate()-today())/7))) + plural(2*((trigdate()-today())/7), " pound")
+REM May 31 2006 +365 MSG Goal is to go from [_curweight()] to [_finweight()] by May 31.
+REM You have [_wtdays()] ([_wtweeks()]) to lose [_pounds()]!
+
+; add info to a reminder not viewable in calendar mode (wyrd) but viewable in default mode with rem -q (bound to "r" in wyrd)
+; text contained within %" and %" will display in calendar mode (wyrd)
+; %_%_ starts a paragraph, and %_ represents a new line of text
+REM Apr 1 2006 MSG %"some title that displays in calendar mode%" %_%_and more info for default mode with rem -q%_this being a new line of text
+
+; trigger a reminder on the second Thursday of every month, but only from
+; May 2007 through September 2009
+REM Thu 8 UNTIL Oct 1 2009 SATISFY [trigdate() >= '2007-05-01'] MSG second Thursday
+
+; Garbage day is every other Thursday, *but* if Monday of that week
+; is a holiday (is omitted), then garbage day is moved to Friday. We use
+; SCANFROM so that we can search for Mondays up to a week in the past
+; (Apr 3 is a Monday).
+FSET _omitthurs(d) iif(isomitted(d), "OMIT Thu AFTER", "")
+REM Apr 3 2006 *14 SCANFROM [trigger(today()-7)] SATISFY 1
+REM [trigger(trigdate()+3)] [_omitthurs(trigdate())] MSG garbage day
