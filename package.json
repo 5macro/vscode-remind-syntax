@@ -2,6 +2,7 @@
   "name": "remind-syntax",
   "displayName": "Remind Syntax",
   "repository": "https://github.com/5macro/vscode-remind-syntax",
+  "publisher": "5macro",
   "icon": "assets/text-1719818166405.png",
   "description": "Visual Studio Code extension providing syntax highlighting for Remind files.",
   "version": "0.0.1",
