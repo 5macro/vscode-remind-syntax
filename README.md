@@ -1,6 +1,12 @@
 # Remind Syntax
 
-Visual Studio Code extension providing syntax highlighting for Remind files(.rem).
+Visual Studio Code extension providing syntax highlighting for [Remind](https://dianne.skoll.ca/projects/remind/) files(.rem).
+
+## What is Remind?
+
+> Remind is a sophisticated calendar and alarm service for Unix. It is a command line application which interacts well with other programs. Remind offers a specialized scripting language which can be used to express rather complicated scheduling methods in just a few lines. -- [Remind FAQ](https://dianne.skoll.ca/wiki/Remind_FAQ)
+
+## Features
 
 ![Light Theme Example](https://github.com/5macro/vscode-remind-syntax/blob/main/assets/light-theme-screenshot.png?raw=true)
 
