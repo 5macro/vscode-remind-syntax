@@ -2,9 +2,9 @@
 
 Visual Studio Code extension providing syntax highlighting for Remind files(.rem).
 
-![Light Theme Example](./assets/light-theme-screenshot.png)
+![Light Theme Example](https://github.com/5macro/vscode-remind-syntax/blob/main/assets/light-theme-screenshot.png?raw=true)
 
-![Dark Theme Example](./assets/dark-theme-screenshot.png)
+![Dark Theme Example](https://github.com/5macro/vscode-remind-syntax/blob/main/assets/dark-theme-screenshot.png?raw=true)
 
 ## Release Notes
 
