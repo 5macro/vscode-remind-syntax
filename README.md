@@ -21,4 +21,4 @@ Visual Studio Code extension providing syntax highlighting for Remind files(.rem
 
 ## License
 
-[MIT](LICENSE)
+[MIT](https://raw.githubusercontent.com/5macro/vscode-remind-syntax/main/LICENSE)
