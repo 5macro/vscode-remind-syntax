@@ -1,0 +1,25 @@
+{
+  "name": "remind-syntax",
+  "displayName": "Remind Syntax",
+  "description": "Visual Studio Code extension providing syntax highlighting for Remind files.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "remind",
+      "aliases": ["Remind", "remind"],
+      "extensions": [".rem"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "remind",
+      "scopeName": "source.remind",
+      "path": "./syntaxes/Remind.tmLanguage"
+    }]
+  }
+}
