@@ -7,6 +7,7 @@
 		<string>defs.rem</string>
 		<string>REM*.txt</string>
 		<string>.reminders</string>
+		<string>.rem</string>
 	</array>
 	<key>firstLineMatch</key>
 	<string>^REM*</string>
@@ -249,7 +250,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>\b(?i:INCLUDE)\b</string>
+			<string>\b(?i:(DO|INCLUDE|INCLUDECMD))\b</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -290,7 +291,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\b(?i:SCHED|WARN|SCANFROM|SCAN|UNTIL)\b</string>
+					<string>\b(?i:SCHED|WARN|SCANFROM|SCAN|FROM|UNTIL)\b</string>
 					<key>name</key>
 					<string>keyword.control.expiry.commandline.remind</string>
 				</dict>
